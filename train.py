@@ -43,6 +43,9 @@ val_transforms = T.Compose([
 ])
 
 # Instantiate the dataset
+if not os.path.exists(config.DATASET_PATH):
+    config.download_celeba(config.DATASET_PATH)
+
 celeba_dataset = data_utils.CelebADataset(config.DATASET_PATH, transform=train_transforms)
 
 # Define the size of the validation set
